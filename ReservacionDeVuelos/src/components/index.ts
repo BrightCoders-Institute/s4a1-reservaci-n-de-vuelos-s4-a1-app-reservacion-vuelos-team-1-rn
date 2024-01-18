@@ -3,6 +3,7 @@ import ContainerComponent from './ContainerComponent';
 import InputComponent from './InputComponent';
 import ButtonComponent from './ButtonComponent';
 import RowComponent from './RowComponent';
+import CheckBoxComponent from './CheckBoxComponent';
 
 
 
@@ -11,5 +12,6 @@ export {
   ContainerComponent,
   InputComponent,
   ButtonComponent,
-  RowComponent
+  RowComponent,
+  CheckBoxComponent
 }

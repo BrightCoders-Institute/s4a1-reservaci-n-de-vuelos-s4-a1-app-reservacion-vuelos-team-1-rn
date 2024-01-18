@@ -31,7 +31,6 @@ const RowComponent = (props: Props) => {
 
 export const stylesRow = StyleSheet.create({
   rowCenter: {
-    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
   },
@@ -41,7 +40,7 @@ export const stylesRow = StyleSheet.create({
       width: 3,
       height: 3,
     },
-    shadowOpacity: 0.63,
+    shadowOpacity: 0.3,
     shadowRadius: 5,
     elevation: 6,
   },
