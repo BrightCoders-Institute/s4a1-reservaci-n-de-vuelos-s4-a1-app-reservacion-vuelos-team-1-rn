@@ -11,7 +11,7 @@ const ButtonComponent = (props: Props) => {
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <TouchableOpacity
         style={{
-          backgroundColor: '#007AFF',
+          backgroundColor: '#fff',
           padding: 10,
           borderRadius: 5,
         }}

@@ -19,13 +19,15 @@ interface Props {
     | '800'
     | '900'
     | undefined;
+  onPress?: () => void;
 }
 
 const TextComponent = (props: Props) => {
-  const {text, color, font, size, styles} = props;
+  const {text, color, font, size, styles, onPress} = props;
 
   return (
     <Text
+      onPress={onPress}
       style={[
         {
           color: color ?? '#444444',
