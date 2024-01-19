@@ -3,7 +3,7 @@ import React from 'react';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 interface Props {
-  text: string;
+  text?: string;
 }
 
 const CheckBoxComponent = (props: Props) => {

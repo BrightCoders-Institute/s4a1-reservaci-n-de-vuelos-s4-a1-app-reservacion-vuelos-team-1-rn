@@ -4,6 +4,8 @@ import InputComponent from './InputComponent';
 import ButtonComponent from './ButtonComponent';
 import RowComponent from './RowComponent';
 import CheckBoxComponent from './CheckBoxComponent';
+import LoadingComponent from './LoadingComponent'
+import SectionComponent from './SectionComponent';
 
 
 
@@ -13,5 +15,7 @@ export {
   InputComponent,
   ButtonComponent,
   RowComponent,
-  CheckBoxComponent
+  CheckBoxComponent,
+  LoadingComponent,
+  SectionComponent
 }
