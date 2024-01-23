@@ -1,11 +1,12 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import {SignUpScreen} from './src/screens';
+import {StackNavigation} from './src/routes/StackNavigation';
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaView>
-      <SignUpScreen />
+    <SafeAreaView style={{flex: 1}}>
+      <StackNavigation />
     </SafeAreaView>
   );
 }

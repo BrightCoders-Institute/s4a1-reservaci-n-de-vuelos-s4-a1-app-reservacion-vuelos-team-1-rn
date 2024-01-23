@@ -26,6 +26,8 @@ import {
   SectionComponent,
 } from '../../components';
 import useAuth from '../../hooks/auth/useAuth';
+import {PropsNavigator} from '../../routes/StackNavigation';
+
 {
   /*Import component end*/
 }
@@ -33,7 +35,7 @@ import useAuth from '../../hooks/auth/useAuth';
 {
   /*const start*/
 }
-const SignUpScreen = () => {
+const SignUpScreen = ({navigation}: PropsNavigator) => {
   const {
     changeLoading,
     email,
@@ -197,7 +199,7 @@ const SignUpScreen = () => {
               color="#626de7"
               size={18}
               styles={{textDecorationLine: 'underline'}}
-              onPress={() => {}}
+              onPress={() => navigation.navigate('MyFlight')}
             />
           </RowComponent>
         </View>
