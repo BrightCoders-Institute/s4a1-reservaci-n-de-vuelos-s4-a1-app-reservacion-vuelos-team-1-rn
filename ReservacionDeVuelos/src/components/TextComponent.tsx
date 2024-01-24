@@ -6,6 +6,7 @@ interface Props {
   color?: string;
   size?: number;
   styles?: StyleProp<TextStyle>;
+  /*  backgroundColor? sting; */
   font?:
     | 'normal'
     | 'bold'
