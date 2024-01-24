@@ -1,6 +1,4 @@
-{
-  /*Import react component start*/
-}
+//Import react component start
 import {
   View,
   Text,
@@ -10,13 +8,11 @@ import {
   Keyboard,
 } from 'react-native';
 import React, {useState} from 'react';
-{
-  /*Import react component end*/
-}
 
-{
-  /*Import component start*/
-}
+//Import react component end
+
+//Import component start
+
 import {
   ContainerComponent,
   InputComponent,
@@ -24,17 +20,14 @@ import {
   CheckBoxComponent,
   RowComponent,
   SectionComponent,
+  LoadingComponent,
 } from '../../components';
 import useAuth from '../../hooks/auth/useAuth';
 import {PropsNavigator} from '../../routes/StackNavigation';
 
-{
-  /*Import component end*/
-}
+//Import component end
 
-{
-  /*const start*/
-}
+//const start
 const SignUpScreen = ({navigation}: PropsNavigator) => {
   const {
     changeLoading,
@@ -47,15 +40,13 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
 
   const [isFull, setIsFull] = useState();
   const [isDisabled, setIsDisabled] = useState(true);
-  {
-    /*const end*/
-  }
+  //const end
   return (
     <ContainerComponent>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} touchSoundDisabled>
         <View>
           <TextComponent text="Sign Up" color="#5f73ed" font="bold" size={30} />
-          {/*sec end*/}
+          {/* Section personal data start */}
           <SectionComponent>
             <TextComponent text="First Name" font="500" size={20} />
             <InputComponent placeholder="Nombre" />
@@ -84,7 +75,9 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
               size={13}
             />
           </SectionComponent>
+          {/*Section personal data end */}
 
+          {/*Section Terms & Conditions start */}
           <SectionComponent>
             <RowComponent>
               <CheckBoxComponent />
@@ -128,7 +121,9 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
               />
             </RowComponent>
           </SectionComponent>
+          {/*Section Terms & Conditions end */}
 
+          {/*Section Login Buttons start */}
           <SectionComponent>
             {isDisabled ? (
               <RowComponent styles={{...styles.disabledButton}}>
@@ -187,7 +182,7 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
               </RowComponent>
             )}
           </SectionComponent>
-
+          {/*Section Login Buttons end */}
           <RowComponent styles={{justifyContent: 'center', marginTop: 15}}>
             <TextComponent
               text="Already have an account?  "
@@ -202,12 +197,16 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
               onPress={() => navigation.navigate('MyFlight')}
             />
           </RowComponent>
+          {/* <LoadingComponent size={40} color="#606df0" isScreen /> */}
         </View>
       </TouchableWithoutFeedback>
     </ContainerComponent>
   );
 };
 
+{
+  /*styles start */
+}
 export const styles = StyleSheet.create({
   disabledButton: {
     borderRadius: 10,
@@ -222,5 +221,9 @@ export const styles = StyleSheet.create({
     backgroundColor: '#626de7',
   },
 });
+
+{
+  /*styles end */
+}
 
 export default SignUpScreen;
