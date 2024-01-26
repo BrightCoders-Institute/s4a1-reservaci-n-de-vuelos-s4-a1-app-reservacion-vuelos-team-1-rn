@@ -30,12 +30,15 @@ import {PropsNavigator} from '../../routes/StackNavigation';
 //const start
 const SignUpScreen = ({navigation}: PropsNavigator) => {
   const {
-    changeLoading,
+    name,
     email,
     password,
-    setChangeLoading,
+    changeLoading,
+    setName,
     setEmail,
     setPassword,
+    setChangeLoading,
+    handleCreateUser,
   } = useAuth();
 
   const [isFull, setIsFull] = useState();
@@ -43,7 +46,7 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
   //const end
   return (
     <View style={{flex: 1}}>
-      <LoadingComponent size={100} color="#606eee" />
+      {/* <LoadingComponent size={100} color="#606eee" /> */}
       <ContainerComponent styles={{flex: 1}}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} touchSoundDisabled>
           <View>
@@ -56,7 +59,11 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
             {/* Section personal data start */}
             <SectionComponent>
               <TextComponent text="First Name" font="500" size={20} />
-              <InputComponent placeholder="Nombre" />
+              <InputComponent
+                placeholder="Nombre"
+                value={name}
+                onChangeText={val => setName(val)}
+              />
 
               <TextComponent text="Mail*" font="500" size={20} />
               <InputComponent
@@ -132,14 +139,12 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
 
             {/*Section Login Buttons start */}
             <SectionComponent>
-              {isDisabled ? (
-                <RowComponent styles={{...styles.disabledButton}}>
-                  <TextComponent text="Sign Up" color="white" font="bold" />
-                </RowComponent>
+              {changeLoading ? (
+                <LoadingComponent size={40} color="#606eee" />
               ) : (
                 <RowComponent
-                  onPress={() => {}}
-                  styles={{...styles.enabledButton, marginTop: 30}}>
+                  onPress={handleCreateUser}
+                  styles={{...styles.enabledButton}}>
                   <TextComponent text="Sign Up" color="white" font="bold" />
                 </RowComponent>
               )}
