@@ -14,9 +14,9 @@ export const StackNavigation = () => {
         screenOptions={{
           headerShown: false,
         }}>
+        <Stack.Screen name="Booking" component={BookingScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="MyFlight" component={MyFlightScreen} />
-        <Stack.Screen name="Booking" component={BookingScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
