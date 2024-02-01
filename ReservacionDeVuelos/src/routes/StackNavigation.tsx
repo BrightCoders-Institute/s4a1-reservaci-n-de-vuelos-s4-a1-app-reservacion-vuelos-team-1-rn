@@ -1,7 +1,15 @@
 import React from 'react';
 import {createStackNavigator, StackScreenProps} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-import {BookingScreen, MyFlightScreen, SignUpScreen} from '../screens';
+
+import {
+  MyFlightScreen,
+  QuestionsBookingScreen,
+  CalendarBookingScreen,
+  SignUpScreen,
+} from '../screens';
+
+interface RouteParams {}
 
 const Stack = createStackNavigator();
 
@@ -14,10 +22,32 @@ export const StackNavigation = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="Booking" component={BookingScreen} />
+        <Stack.Screen name="Home" component={UserStack} />
+        {/* Condicional para entrar al home, si el usuario existe 
+        
+          User ? () : ()
+        
+        */}
+
         <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="MyFlight" component={MyFlightScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+  );
+};
+
+const UserStack = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <Stack.Screen name="CalendarBooking" component={CalendarBookingScreen} />
+      <Stack.Screen
+        name="QuestionsBooking"
+        component={QuestionsBookingScreen}
+      />
+
+      <Stack.Screen name="MyFlight" component={MyFlightScreen} />
+    </Stack.Navigator>
   );
 };
