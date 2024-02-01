@@ -9,6 +9,7 @@ import SectionComponent from './SectionComponent';
 import FabComponent from './FabComponent';
 import CardComponent from './CardComponent';
 import InputBookingComponent from './InputBookingComponent';
+import CalendarComponent from './CalendarComponent';
 
 
 
@@ -24,4 +25,5 @@ export {
   SectionComponent,
   FabComponent,
   CardComponent,
+  CalendarComponent
 }
