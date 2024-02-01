@@ -11,7 +11,7 @@ import {
 import {PropsNavigator} from '../routes/StackNavigation';
 import {globalStyles} from '../theme/globalStyle';
 
-const BookingScreen = ({navigation}: PropsNavigator) => {
+const QuestionsBookingScreen = ({navigation}: PropsNavigator) => {
   return (
     <View>
       <FabComponent
@@ -23,27 +23,38 @@ const BookingScreen = ({navigation}: PropsNavigator) => {
       />
       <ContainerComponent styles={{paddingVertical: 50}} isScroll>
         <SectionComponent>
-          <TextComponent text="Where are you now?" font="bold" size={32} />
+          <TextComponent
+            text={'Where are you\nnow?'}
+            font="bold"
+            size={32}
+            color="black"
+          />
 
           <InputBookingComponent placeholder="Select location" />
         </SectionComponent>
 
         <SectionComponent>
           <TextComponent
-            text="Where will you be flying to?"
+            text={'Where will you be \nflying to?'}
             font="bold"
             size={32}
+            color="black"
           />
 
           <InputBookingComponent placeholder="Select location" />
         </SectionComponent>
 
-        <RowComponent onPress={() => {}} styles={globalStyles.buttonDisable}>
-          <TextComponent text="Next" font="bold" color="white" />
-        </RowComponent>
+        <SectionComponent>
+          {/* habilitar botón si los campos estan llenos, sino, bloquearlo */}
+          <RowComponent
+            onPress={() => {}}
+            styles={[globalStyles.buttonDisable, {marginTop: 190}]}>
+            <TextComponent text="Next" font="bold" color="white" />
+          </RowComponent>
+        </SectionComponent>
       </ContainerComponent>
     </View>
   );
 };
 
-export default BookingScreen;
+export default QuestionsBookingScreen;
