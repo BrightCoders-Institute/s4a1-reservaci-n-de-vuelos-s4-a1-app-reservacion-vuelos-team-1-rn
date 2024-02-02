@@ -2,7 +2,7 @@ import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import React from 'react';
 
 interface Props {
-  Text: string;
+  text: string;
   color?: string;
 }
 
@@ -10,6 +10,7 @@ const ButtonComponent = (props: Props) => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <TouchableOpacity
+        testID="test-button"
         style={{
           backgroundColor: '#fff',
           padding: 10,

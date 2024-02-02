@@ -38,6 +38,8 @@ LocaleConfig.locales['fr'] = {
 
 LocaleConfig.defaultLocale = 'fr';
 
+const currentDate = new Date();
+
 // Si me voy a retirar
 // como asi?
 
@@ -74,7 +76,7 @@ const CalendarComponent = () => {
         textMonthFontWeight: 'bold',
         textMonthFontSize: 20,
       }}
-      minDate={'2024-01-30'}
+      minDate={currentDate.toString()}
       renderArrow={directions => (
         <Icon name={`chevron-${directions}`} size={30} color="#5f73ed" />
       )}
