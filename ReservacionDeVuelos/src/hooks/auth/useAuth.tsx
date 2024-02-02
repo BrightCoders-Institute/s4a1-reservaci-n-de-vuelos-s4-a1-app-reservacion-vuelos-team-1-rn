@@ -29,6 +29,33 @@ const useAuth = () => {
     }
   };
 
+  const handleLoginWithEmail = async () => {
+    if (email.length > 0 && password.length > 0) {
+      setChangeLoading(true);
+      await auth()
+        .signInWithEmailAndPassword(email.trim(), password)
+        .then(userCredential => {
+          const user = userCredential.user;
+          setChangeLoading(false);
+        })
+        .catch(err => {
+          Alert.alert(err.message);
+          setChangeLoading(false);
+        });
+    } else {
+      Alert.alert('All fields are required');
+      setChangeLoading(false);
+    }
+  };
+
+  const handleSignOut = async () => {
+    await auth()
+      .signOut()
+      .then(() => {
+        Alert.alert('Session finished');
+      });
+  };
+
   return {
     name,
     setName,
@@ -39,6 +66,8 @@ const useAuth = () => {
     setPassword,
     setChangeLoading,
     handleCreateUser,
+    handleLoginWithEmail,
+    handleSignOut,
   };
 };
 
