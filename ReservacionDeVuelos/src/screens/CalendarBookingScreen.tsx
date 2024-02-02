@@ -8,6 +8,7 @@ import {
   InputBookingComponent,
   RowComponent,
   CalendarComponent,
+  CardComponent,
 } from '../components';
 import {PropsNavigator} from '../routes/StackNavigation';
 import {globalStyles} from '../theme/globalStyle';
@@ -23,6 +24,7 @@ const CalendarBookingScreen = ({navigation}: PropsNavigator) => {
         styles={{top: 10, left: 16}}
       />
       <ContainerComponent styles={{paddingVertical: 50}} isScroll>
+        <CardComponent />
         <SectionComponent>
           <TextComponent
             text="Select date"
@@ -37,8 +39,8 @@ const CalendarBookingScreen = ({navigation}: PropsNavigator) => {
         </SectionComponent>
 
         <RowComponent
-          onPress={() => {}}
-          styles={[globalStyles.buttonDisable, {marginTop: 170}]}>
+          onPress={() => navigation.navigate('Passengers')}
+          styles={[globalStyles.buttonEnable, {marginTop: 0}]}>
           <TextComponent text="Next" font="bold" color="white" />
         </RowComponent>
       </ContainerComponent>

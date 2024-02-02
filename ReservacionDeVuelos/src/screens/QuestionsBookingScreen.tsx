@@ -47,8 +47,8 @@ const QuestionsBookingScreen = ({navigation}: PropsNavigator) => {
         <SectionComponent>
           {/* habilitar botón si los campos estan llenos, sino, bloquearlo */}
           <RowComponent
-            onPress={() => {}}
-            styles={[globalStyles.buttonDisable, {marginTop: 190}]}>
+            onPress={() => navigation.navigate('CalendarBooking')}
+            styles={[globalStyles.buttonEnable, {marginTop: 190}]}>
             <TextComponent text="Next" font="bold" color="white" />
           </RowComponent>
         </SectionComponent>
