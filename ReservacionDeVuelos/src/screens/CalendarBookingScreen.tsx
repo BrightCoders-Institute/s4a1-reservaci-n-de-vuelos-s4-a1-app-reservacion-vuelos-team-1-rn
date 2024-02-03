@@ -23,7 +23,7 @@ const CalendarBookingScreen = ({navigation}: PropsNavigator) => {
         onPress={() => navigation.goBack()}
         styles={{top: 10, left: 16}}
       />
-      <ContainerComponent styles={{paddingVertical: 50}} isScroll>
+      <ContainerComponent styles={{paddingVertical: 60}} isScroll>
         <CardComponent />
         <SectionComponent>
           <TextComponent

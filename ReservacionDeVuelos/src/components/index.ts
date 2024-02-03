@@ -10,6 +10,8 @@ import FabComponent from './FabComponent';
 import CardComponent from './CardComponent';
 import InputBookingComponent from './InputBookingComponent';
 import CalendarComponent from './CalendarComponent';
+import WheelyComponent from './WheelyComponent';
+import LogoComponent from './LogoComponent';
 
 
 
@@ -25,5 +27,7 @@ export {
   SectionComponent,
   FabComponent,
   CardComponent,
-  CalendarComponent
+  CalendarComponent,
+  WheelyComponent,
+  LogoComponent,
 }
