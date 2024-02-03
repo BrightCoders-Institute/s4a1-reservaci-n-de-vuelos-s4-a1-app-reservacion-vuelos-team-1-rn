@@ -21,6 +21,7 @@ import {
   RowComponent,
   SectionComponent,
   LoadingComponent,
+  LogoComponent,
 } from '../../components';
 import useAuth from '../../hooks/auth/useAuth';
 import {PropsNavigator} from '../../routes/StackNavigation';
@@ -56,8 +57,8 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
   //const end
   return (
     <View style={{flex: 1}}>
-      {/* <LoadingComponent size={100} color="#606eee" /> */}
-      <ContainerComponent styles={{flex: 1, justifyContent: 'center'}}>
+      <ContainerComponent isScroll>
+        {variant === 'LOGIN' && <LogoComponent />}
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} touchSoundDisabled>
           <View>
             <TextComponent
