@@ -1,29 +1,29 @@
-// import React, {useState} from 'react';
-// import WheelPicker from 'react-native-wheely';
+import React, {useState} from 'react';
+import {StyleProp, Text, TextStyle, ViewStyle} from 'react-native';
+import WheelPicker from 'react-native-wheely';
 
-// function Wheely() {
-//   const [selected, setSelected] = useState('1');
+interface Props {
+  styles?: StyleProp<TextStyle>;
+  itemStyle?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
+  itemTextStyle?: StyleProp<TextStyle>;
+}
 
-//   return (
-//     <WheelPicker
-//       options={['1', '2', '3']}
-//       selected={selected}
-//       onChange={passengers => setSelected(passengers)}
-//     />
-//   );
-// }
+function WheelyComponent(props: Props) {
+  const {styles, itemStyle, containerStyle, itemTextStyle} = props;
 
-// export default Wheely;
+  const [selected, setSelected] = useState('1');
 
-import {View, Text} from 'react-native';
-import React from 'react';
+  const options = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
-const WheelyComponent = () => {
   return (
-    <View>
-      <Text>WheelyComponent</Text>
-    </View>
+    <WheelPicker
+      selectedIndex={0}
+      options={options}
+      itemTextStyle={{fontSize: 28, color: 'black'}}
+      onChange={number => setSelected(number.toString())}
+    />
   );
-};
+}
 
 export default WheelyComponent;
