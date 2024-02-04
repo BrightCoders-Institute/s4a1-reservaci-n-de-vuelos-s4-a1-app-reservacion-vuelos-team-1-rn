@@ -1,17 +1,11 @@
-//Import react component start
+import React, {useState} from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   Image,
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import React, {useState} from 'react';
-
-//Import react component end
-
-//Import component start
 
 import {
   ContainerComponent,
@@ -23,13 +17,13 @@ import {
   LoadingComponent,
   LogoComponent,
 } from '../../components';
-import useAuth from '../../hooks/auth/useAuth';
-import {PropsNavigator} from '../../routes/StackNavigation';
 
-//const start
+import useAuth from '../../hooks/auth/useAuth';
+import {globalStyles} from '../../theme/globalStyle';
+
 type variant = 'LOGIN' | 'REGISTER';
 
-const SignUpScreen = ({navigation}: PropsNavigator) => {
+const SignUpScreen = () => {
   const {
     name,
     email,
@@ -167,7 +161,7 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
                       ? handleCreateUser
                       : handleLoginWithEmail
                   }
-                  styles={{...styles.enabledButton}}>
+                  styles={globalStyles.buttonEnable}>
                   <TextComponent
                     text={variant === 'REGISTER' ? 'Sign Up' : 'Log In'}
                     color="white"
@@ -196,7 +190,7 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
               </RowComponent>
 
               {isDisabled ? (
-                <RowComponent styles={styles.disabledButton}>
+                <RowComponent styles={globalStyles.buttonDisable}>
                   <Image
                     source={require('../../assets/icons/logo-google.webp')}
                     style={{
@@ -216,7 +210,9 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
                   />
                 </RowComponent>
               ) : (
-                <RowComponent onPress={() => {}} styles={styles.enabledButton}>
+                <RowComponent
+                  onPress={() => {}}
+                  styles={globalStyles.buttonEnable}>
                   <Image
                     source={require('../../assets/icons/logo-google.webp')}
                     style={{
@@ -263,24 +259,5 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
     </View>
   );
 };
-
-/*styles start */
-
-export const styles = StyleSheet.create({
-  disabledButton: {
-    borderRadius: 10,
-    padding: 15,
-    backgroundColor: '#b6b7ba',
-    justifyContent: 'center',
-  },
-  enabledButton: {
-    borderRadius: 10,
-    padding: 15,
-    justifyContent: 'center',
-    backgroundColor: '#626de7',
-  },
-});
-
-/*styles end */
 
 export default SignUpScreen;

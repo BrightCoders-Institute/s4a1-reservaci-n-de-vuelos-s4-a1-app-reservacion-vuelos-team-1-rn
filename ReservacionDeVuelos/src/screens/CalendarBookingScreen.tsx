@@ -15,7 +15,7 @@ import {globalStyles} from '../theme/globalStyle';
 
 const CalendarBookingScreen = ({navigation}: PropsNavigator) => {
   return (
-    <View>
+    <View style={{flex: 1}}>
       <FabComponent
         iconName="chevron-back"
         iconSize={30}
@@ -23,8 +23,10 @@ const CalendarBookingScreen = ({navigation}: PropsNavigator) => {
         onPress={() => navigation.goBack()}
         styles={{top: 10, left: 16}}
       />
-      <ContainerComponent styles={{paddingVertical: 60}} isScroll>
-        <CardComponent />
+      <ContainerComponent styles={{paddingVertical: 50}} isScroll>
+        <SectionComponent>
+          <CardComponent />
+        </SectionComponent>
         <SectionComponent>
           <TextComponent
             text="Select date"
@@ -32,9 +34,7 @@ const CalendarBookingScreen = ({navigation}: PropsNavigator) => {
             size={32}
             color="black"
           />
-        </SectionComponent>
 
-        <SectionComponent>
           <CalendarComponent />
         </SectionComponent>
 

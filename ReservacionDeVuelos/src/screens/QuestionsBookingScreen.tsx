@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
 import {
   ContainerComponent,
@@ -13,7 +13,7 @@ import {globalStyles} from '../theme/globalStyle';
 
 const QuestionsBookingScreen = ({navigation}: PropsNavigator) => {
   return (
-    <View>
+    <View style={{flex: 1}}>
       <FabComponent
         iconName="chevron-back"
         iconSize={30}

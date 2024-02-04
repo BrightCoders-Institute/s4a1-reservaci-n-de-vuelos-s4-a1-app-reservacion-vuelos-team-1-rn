@@ -21,14 +21,13 @@ const MyFlightScreen = ({navigation}: PropsNavigator) => {
         onPress={() => navigation.navigate('QuestionsBooking')}
         styles={{bottom: 25, right: 25, position: 'absolute'}}
       />
-
-      <FabComponent
-        iconName="log-out-outline"
-        iconSize={20}
-        onPress={handleSignOut}
-        styles={{top: 8, right: 16, position: 'absolute'}}
-      />
       <ContainerComponent>
+        <FabComponent
+          iconName="log-out-outline"
+          iconSize={20}
+          onPress={handleSignOut}
+          styles={{top: 8, right: 16, position: 'absolute'}}
+        />
         <TextComponent
           text="My Flights"
           color="#5f73ed"
