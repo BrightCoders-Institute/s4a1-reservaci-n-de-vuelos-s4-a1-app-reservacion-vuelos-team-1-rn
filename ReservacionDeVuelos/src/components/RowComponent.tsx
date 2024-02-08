@@ -12,13 +12,15 @@ interface Props {
   children: ReactNode;
   styles?: StyleProp<ViewStyle>;
   onPress?: () => void;
+  disabled?: boolean;
 }
 
 const RowComponent = (props: Props) => {
-  const {children, onPress, styles} = props;
+  const {children, onPress, styles, disabled} = props;
 
   return onPress ? (
     <TouchableOpacity
+      disabled={disabled}
       activeOpacity={0.8}
       onPress={onPress}
       style={[stylesRow.rowCenter, stylesRow.shadow, styles]}>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Calendar, LocaleConfig} from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Entypo';
 
@@ -40,11 +40,17 @@ LocaleConfig.defaultLocale = 'fr';
 
 const currentDate = new Date();
 
-// Si me voy a retirar
-// como asi?
+interface DateProps {
+  onSelectDate: (date: string) => void;
+}
 
-const CalendarComponent = () => {
+const CalendarComponent = (props: DateProps) => {
+  const {onSelectDate} = props;
   const [selected, setSelected] = useState('');
+
+  useEffect(() => {
+    onSelectDate(selected);
+  }, [selected, onSelectDate]);
 
   return (
     <Calendar
