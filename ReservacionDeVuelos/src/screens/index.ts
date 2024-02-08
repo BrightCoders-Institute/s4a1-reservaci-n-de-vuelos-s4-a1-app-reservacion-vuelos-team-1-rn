@@ -1,9 +1,13 @@
-import BookingScreen from './BookingScreen';
+import QuestionsBookingScreen from './QuestionsBookingScreen';
+import CalendarBookingScreen from './CalendarBookingScreen';
 import SignUpScreen from './auth/SignUpScreen';
 import MyFlightScreen from './MyFlightScreen';
+import PassengersScreen from './PassengersScreen';
 
 export {
   SignUpScreen,
-  BookingScreen,
-  MyFlightScreen
+  QuestionsBookingScreen,
+  MyFlightScreen,
+  CalendarBookingScreen,
+  PassengersScreen
 }

@@ -4,19 +4,7 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import {RowComponent, TextComponent} from '.';
 
-interface Props {
-  city: string;
-  country: string;
-  destinationCity: string;
-  destinationCountry: string;
-  date: string;
-  passengers: string;
-}
-
-const CardComponent = (props: Props) => {
-  const {city, country, destinationCity, destinationCountry, date, passengers} =
-    props;
-
+const CardComponent = () => {
   return (
     <TouchableOpacity onPress={() => {}} activeOpacity={0.8}>
       <View style={stylesCard.cardContainer}>
@@ -26,15 +14,15 @@ const CardComponent = (props: Props) => {
             justifyContent: 'space-between',
           }}>
           <View style={{alignContent: 'center', alignItems: 'center'}}>
-            <TextComponent text={city} font="bold" size={25} />
-            <TextComponent text={country} />
+            <TextComponent text="BEG" font="bold" size={25} />
+            <TextComponent text="Serbia" />
           </View>
 
           <IonIcon name="airplane" size={30} color={'#5f73ed'} />
 
           <View style={{alignContent: 'center', alignItems: 'center'}}>
-            <TextComponent text={destinationCity} font="bold" size={25} />
-            <TextComponent text={destinationCountry} />
+            <TextComponent text="AMS" font="bold" size={25} />
+            <TextComponent text="Netherlands" />
           </View>
         </RowComponent>
 
@@ -53,11 +41,11 @@ const CardComponent = (props: Props) => {
             justifyContent: 'space-between',
           }}>
           <View style={{alignContent: 'center', alignItems: 'center'}}>
-            <TextComponent text={date} font="bold" />
+            <TextComponent text="September 3, 2020" font="bold" />
           </View>
 
           <View style={{alignContent: 'center', alignItems: 'center'}}>
-            <TextComponent text={`${passengers} passengers`} font="bold" />
+            <TextComponent text="2 passengers" font="bold" />
           </View>
         </RowComponent>
       </View>

@@ -1,17 +1,11 @@
-//Import react component start
+import React, {useState} from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   Image,
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import React, {useState} from 'react';
-
-//Import react component end
-
-//Import component start
 
 import {
   ContainerComponent,
@@ -21,14 +15,15 @@ import {
   RowComponent,
   SectionComponent,
   LoadingComponent,
+  LogoComponent,
 } from '../../components';
+
 import useAuth from '../../hooks/auth/useAuth';
-import {PropsNavigator} from '../../routes/StackNavigation';
+import {globalStyles} from '../../theme/globalStyle';
 
-//Import component end
+type variant = 'LOGIN' | 'REGISTER';
 
-//const start
-const SignUpScreen = ({navigation}: PropsNavigator) => {
+const SignUpScreen = () => {
   const {
     name,
     email,
@@ -39,31 +34,45 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
     setPassword,
     setChangeLoading,
     handleCreateUser,
+    handleLoginWithEmail,
   } = useAuth();
 
   const [isFull, setIsFull] = useState();
   const [isDisabled, setIsDisabled] = useState(true);
+  const [variant, setVariant] = useState<variant>('LOGIN');
+
+  const handleVariant = () => {
+    setVariant(prevVariant => (prevVariant === 'LOGIN' ? 'REGISTER' : 'LOGIN'));
+    setName('');
+    setEmail('');
+    setPassword('');
+  };
+
   //const end
   return (
     <View style={{flex: 1}}>
-      {/* <LoadingComponent size={100} color="#606eee" /> */}
-      <ContainerComponent styles={{flex: 1}}>
+      <ContainerComponent isScroll>
+        {variant === 'LOGIN' && <LogoComponent />}
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} touchSoundDisabled>
           <View>
             <TextComponent
-              text="Sign Up"
+              text={variant === 'REGISTER' ? 'Sign Up' : 'Log In'}
               color="#5f73ed"
               font="bold"
               size={30}
             />
             {/* Section personal data start */}
             <SectionComponent>
-              <TextComponent text="First Name" font="500" size={20} />
-              <InputComponent
-                placeholder="Nombre"
-                value={name}
-                onChangeText={val => setName(val)}
-              />
+              {variant === 'REGISTER' && (
+                <View>
+                  <TextComponent text="First Name" font="500" size={20} />
+                  <InputComponent
+                    placeholder="Nombre"
+                    value={name}
+                    onChangeText={val => setName(val)}
+                  />
+                </View>
+              )}
 
               <TextComponent text="Mail*" font="500" size={20} />
               <InputComponent
@@ -82,59 +91,63 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
                 onChangeText={val => setPassword(val)}
               />
 
-              <TextComponent
-                text="Use 8 or more characters with a mix of letters,number, and symbols."
-                color="#B6B7BA"
-                font="400"
-                size={13}
-              />
+              {variant === 'REGISTER' && (
+                <TextComponent
+                  text="Use 8 or more characters with a mix of letters,number, and symbols."
+                  color="#B6B7BA"
+                  font="400"
+                  size={13}
+                />
+              )}
             </SectionComponent>
             {/*Section personal data end */}
 
             {/*Section Terms & Conditions start */}
-            <SectionComponent>
-              <RowComponent>
-                <CheckBoxComponent />
-                <TextComponent
-                  text="I agree to the "
-                  color="#B6B7BA"
-                  font="400"
-                  size={16}
-                />
-                <TextComponent
-                  text="Terms"
-                  color="#B6B7BA"
-                  font="400"
-                  size={16}
-                  styles={{textDecorationLine: 'underline'}}
-                  onPress={() => {}}
-                />
-                <TextComponent
-                  text=" and "
-                  color="#B6B7BA"
-                  font="400"
-                  size={16}
-                />
-                <TextComponent
-                  text="Privacy Policy."
-                  color="#B6B7BA"
-                  font="400"
-                  size={16}
-                  styles={{textDecorationLine: 'underline'}}
-                  onPress={() => {}}
-                />
-                <Text style={{color: 'red'}}> *</Text>
-              </RowComponent>
-              <RowComponent>
-                <CheckBoxComponent />
-                <TextComponent
-                  text="Subscribe for select product updates."
-                  color="#B6B7BA"
-                  font="400"
-                  size={16}
-                />
-              </RowComponent>
-            </SectionComponent>
+            {variant === 'REGISTER' && (
+              <SectionComponent>
+                <RowComponent>
+                  <CheckBoxComponent />
+                  <TextComponent
+                    text="I agree to the "
+                    color="#B6B7BA"
+                    font="400"
+                    size={16}
+                  />
+                  <TextComponent
+                    text="Terms"
+                    color="#B6B7BA"
+                    font="400"
+                    size={16}
+                    styles={{textDecorationLine: 'underline'}}
+                    onPress={() => {}}
+                  />
+                  <TextComponent
+                    text=" and "
+                    color="#B6B7BA"
+                    font="400"
+                    size={16}
+                  />
+                  <TextComponent
+                    text="Privacy Policy."
+                    color="#B6B7BA"
+                    font="400"
+                    size={16}
+                    styles={{textDecorationLine: 'underline'}}
+                    onPress={() => {}}
+                  />
+                  <Text style={{color: 'red'}}> *</Text>
+                </RowComponent>
+                <RowComponent>
+                  <CheckBoxComponent />
+                  <TextComponent
+                    text="Subscribe for select product updates."
+                    color="#B6B7BA"
+                    font="400"
+                    size={16}
+                  />
+                </RowComponent>
+              </SectionComponent>
+            )}
             {/*Section Terms & Conditions end */}
 
             {/*Section Login Buttons start */}
@@ -143,9 +156,17 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
                 <LoadingComponent size={40} color="#606eee" />
               ) : (
                 <RowComponent
-                  onPress={handleCreateUser}
-                  styles={{...styles.enabledButton}}>
-                  <TextComponent text="Sign Up" color="white" font="bold" />
+                  onPress={
+                    variant === 'REGISTER'
+                      ? handleCreateUser
+                      : handleLoginWithEmail
+                  }
+                  styles={globalStyles.buttonEnable}>
+                  <TextComponent
+                    text={variant === 'REGISTER' ? 'Sign Up' : 'Log In'}
+                    color="white"
+                    font="bold"
+                  />
                 </RowComponent>
               )}
 
@@ -169,7 +190,7 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
               </RowComponent>
 
               {isDisabled ? (
-                <RowComponent styles={styles.disabledButton}>
+                <RowComponent styles={globalStyles.buttonDisable}>
                   <Image
                     source={require('../../assets/icons/logo-google.webp')}
                     style={{
@@ -179,13 +200,19 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
                     }}
                   />
                   <TextComponent
-                    text="Sign Up with Google"
+                    text={
+                      variant === 'REGISTER'
+                        ? 'Sign Up with Google'
+                        : 'Log In with Google'
+                    }
                     color="white"
                     font="bold"
                   />
                 </RowComponent>
               ) : (
-                <RowComponent onPress={() => {}} styles={styles.enabledButton}>
+                <RowComponent
+                  onPress={() => {}}
+                  styles={globalStyles.buttonEnable}>
                   <Image
                     source={require('../../assets/icons/logo-google.webp')}
                     style={{
@@ -195,7 +222,11 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
                     }}
                   />
                   <TextComponent
-                    text="Sign Up with Google"
+                    text={
+                      variant === 'REGISTER'
+                        ? 'Sign Up with Google'
+                        : 'Log In with Google'
+                    }
                     color="white"
                     font="bold"
                   />
@@ -205,16 +236,20 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
             {/*Section Login Buttons end */}
             <RowComponent styles={{justifyContent: 'center', marginTop: 15}}>
               <TextComponent
-                text="Already have an account?  "
+                text={
+                  variant === 'REGISTER'
+                    ? 'Already have an account? '
+                    : `Don't have an account? `
+                }
                 color="#B6B7BA"
                 size={18}
               />
               <TextComponent
-                text="Log In"
+                text={variant === 'REGISTER' ? 'Log In' : 'Sign Up'}
                 color="#626de7"
                 size={18}
                 styles={{textDecorationLine: 'underline'}}
-                onPress={() => navigation.navigate('MyFlight')}
+                onPress={handleVariant}
               />
             </RowComponent>
             {/* <LoadingComponent size={40} color="#606df0" isScreen /> */}
@@ -224,24 +259,5 @@ const SignUpScreen = ({navigation}: PropsNavigator) => {
     </View>
   );
 };
-
-/*styles start */
-
-export const styles = StyleSheet.create({
-  disabledButton: {
-    borderRadius: 10,
-    padding: 15,
-    backgroundColor: '#b6b7ba',
-    justifyContent: 'center',
-  },
-  enabledButton: {
-    borderRadius: 10,
-    padding: 15,
-    justifyContent: 'center',
-    backgroundColor: '#626de7',
-  },
-});
-
-/*styles end */
 
 export default SignUpScreen;

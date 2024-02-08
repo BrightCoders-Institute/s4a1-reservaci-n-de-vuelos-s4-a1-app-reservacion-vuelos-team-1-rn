@@ -47,8 +47,13 @@ const FabComponent = (props: Props) => {
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={onPress}
-          style={stylesFab.fabButton}>
-          <IonIcon name={iconName} size={iconSize} color="white" />
+          style={[stylesFab.fabButton, stylesFab.shadow, styles]}>
+          <IonIcon
+            name={iconName}
+            size={iconSize}
+            color={iconColor}
+            style={{right: 1}}
+          />
         </TouchableOpacity>
       )}
     </>
@@ -57,13 +62,14 @@ const FabComponent = (props: Props) => {
 
 export const stylesFab = StyleSheet.create({
   fabButton: {
-    width: 50,
+    width: 40,
+    zIndex: 100,
     aspectRatio: 1 / 1,
     borderRadius: 100,
-    alignContent: 'center',
     alignItems: 'center',
-
-    zIndex: 100,
+    justifyContent: 'center',
+    position: 'absolute',
+    backgroundColor: 'white',
   },
   plusButton: {
     width: 65,
