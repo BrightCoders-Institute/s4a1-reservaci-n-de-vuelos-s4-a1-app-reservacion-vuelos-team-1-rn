@@ -4,7 +4,19 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import {RowComponent, TextComponent} from '.';
 
-const CardComponent = () => {
+interface Props {
+  city: string;
+  country: string;
+  destinationCity: string;
+  destinationCountry: string;
+  date: string;
+  passengers: string;
+}
+
+const CardComponent = (props: Props) => {
+  const {city, country, destinationCity, destinationCountry, date, passengers} =
+    props;
+
   return (
     <TouchableOpacity onPress={() => {}} activeOpacity={0.8}>
       <View style={stylesCard.cardContainer}>
@@ -14,15 +26,15 @@ const CardComponent = () => {
             justifyContent: 'space-between',
           }}>
           <View style={{alignContent: 'center', alignItems: 'center'}}>
-            <TextComponent text="BEG" font="bold" size={25} />
-            <TextComponent text="Serbia" />
+            <TextComponent text={city} font="bold" size={25} />
+            <TextComponent text={country} />
           </View>
 
           <IonIcon name="airplane" size={30} color={'#5f73ed'} />
 
           <View style={{alignContent: 'center', alignItems: 'center'}}>
-            <TextComponent text="AMS" font="bold" size={25} />
-            <TextComponent text="Netherlands" />
+            <TextComponent text={destinationCity} font="bold" size={25} />
+            <TextComponent text={destinationCountry} />
           </View>
         </RowComponent>
 
@@ -41,11 +53,11 @@ const CardComponent = () => {
             justifyContent: 'space-between',
           }}>
           <View style={{alignContent: 'center', alignItems: 'center'}}>
-            <TextComponent text="September 3, 2020" font="bold" />
+            <TextComponent text={date} font="bold" />
           </View>
 
           <View style={{alignContent: 'center', alignItems: 'center'}}>
-            <TextComponent text="2 passengers" font="bold" />
+            <TextComponent text={`${passengers} passengers`} font="bold" />
           </View>
         </RowComponent>
       </View>
