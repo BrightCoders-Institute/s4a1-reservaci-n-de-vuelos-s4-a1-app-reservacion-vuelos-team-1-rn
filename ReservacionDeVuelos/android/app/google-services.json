@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "394878762129",
-    "project_id": "reservaciondevuelos-38479",
-    "storage_bucket": "reservaciondevuelos-38479.appspot.com"
+    "project_number": "506423197244",
+    "project_id": "reservacionvuelos-3f899",
+    "storage_bucket": "reservacionvuelos-3f899.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:394878762129:android:372825e3ac46795aaed330",
+        "mobilesdk_app_id": "1:506423197244:android:124a8ba693b50984048d39",
         "android_client_info": {
           "package_name": "com.reservaciondevuelos"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAk2LDg2C4MRBcLpNbWsQ1eBqSxrFOrPDs"
+          "current_key": "AIzaSyALo_WGoGOwm1Q1EODeKEP6xKKgReW2qLo"
         }
       ],
       "services": {
