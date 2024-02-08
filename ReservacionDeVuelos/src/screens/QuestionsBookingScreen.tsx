@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {
   ContainerComponent,
   FabComponent,
@@ -12,6 +12,9 @@ import {PropsNavigator} from '../routes/StackNavigation';
 import {globalStyles} from '../theme/globalStyle';
 
 const QuestionsBookingScreen = ({navigation}: PropsNavigator) => {
+  const [currentLocation, setCurrentLocation] = useState<string>('');
+  const [destination, setDestination] = useState<string>('');
+
   return (
     <View style={{flex: 1}}>
       <FabComponent
@@ -30,7 +33,10 @@ const QuestionsBookingScreen = ({navigation}: PropsNavigator) => {
             color="black"
           />
 
-          <InputBookingComponent placeholder="Select location" />
+          <InputBookingComponent
+            placeholder="Select location"
+            onChangeText={value => setCurrentLocation(value)}
+          />
         </SectionComponent>
 
         <SectionComponent>
@@ -41,13 +47,21 @@ const QuestionsBookingScreen = ({navigation}: PropsNavigator) => {
             color="black"
           />
 
-          <InputBookingComponent placeholder="Select location" />
+          <InputBookingComponent
+            placeholder="Select location"
+            onChangeText={value => setDestination(value)}
+          />
         </SectionComponent>
 
         <SectionComponent>
-          {/* habilitar botón si los campos estan llenos, sino, bloquearlo */}
+          {/* habilitar botón si los campos están llenos, sino, bloquearlo */}
           <RowComponent
-            onPress={() => navigation.navigate('CalendarBooking')}
+            onPress={() =>
+              navigation.navigate('CalendarBooking', {
+                location: currentLocation,
+                destination: destination,
+              })
+            }
             styles={[globalStyles.buttonEnable, {marginTop: 190}]}>
             <TextComponent text="Next" font="bold" color="white" />
           </RowComponent>

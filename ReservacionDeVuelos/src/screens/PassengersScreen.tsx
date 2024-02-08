@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import WheelyComponent from '../components/WheelyComponent';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -15,7 +15,13 @@ import {
 import {PropsNavigator} from '../routes/StackNavigation';
 import {globalStyles} from '../theme/globalStyle';
 
-const PassengersScreen = ({navigation}: PropsNavigator) => {
+const PassengersScreen = ({route, navigation}: PropsNavigator) => {
+  const [selectedNumber, setSelectedNumber] = useState('');
+
+  //@ts-ignore
+  const {city, country, destinationCity, destinationCountry, date} =
+    route.params;
+
   return (
     <View style={{flex: 1}}>
       <FabComponent
@@ -27,7 +33,14 @@ const PassengersScreen = ({navigation}: PropsNavigator) => {
       />
       <ContainerComponent styles={{flex: 1, marginTop: 50}}>
         <SectionComponent>
-          <CardComponent />
+          <CardComponent
+            city={country}
+            country={country}
+            destinationCity={destinationCity}
+            destinationCountry={destinationCountry}
+            date={date}
+            passengers={selectedNumber}
+          />
         </SectionComponent>
         <SectionComponent>
           <TextComponent
@@ -49,13 +62,16 @@ const PassengersScreen = ({navigation}: PropsNavigator) => {
               height: 55,
             }}>
             <Icon name="caret-forward" size={25} style={{color: '#606eee'}} />
-            <WheelyComponent />
+            <WheelyComponent
+              onSelectNumber={number => setSelectedNumber(number)}
+            />
             <Icon name="caret-back" size={25} style={{color: '#606eee'}} />
           </View>
         </SectionComponent>
 
         <SectionComponent>
           <RowComponent
+            disabled={selectedNumber === '0'}
             onPress={() => navigation.popToTop()}
             styles={[globalStyles.buttonEnable, {bottom: 0}]}>
             <TextComponent text="Confirm" font="bold" color="white" />

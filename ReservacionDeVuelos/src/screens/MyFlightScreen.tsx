@@ -35,9 +35,7 @@ const MyFlightScreen = ({navigation}: PropsNavigator) => {
           size={30}
         />
         <SectionComponent>
-          <CardComponent />
-          <CardComponent />
-          <CardComponent />
+          <TextComponent text="No flights booked yet!" size={23} />
         </SectionComponent>
       </ContainerComponent>
     </View>
