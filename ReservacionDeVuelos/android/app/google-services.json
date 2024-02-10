@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "506423197244",
-    "project_id": "reservacionvuelos-3f899",
-    "storage_bucket": "reservacionvuelos-3f899.appspot.com"
+    "project_number": "924168030494",
+    "project_id": "flightbookin-f48b8",
+    "storage_bucket": "flightbookin-f48b8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:506423197244:android:124a8ba693b50984048d39",
+        "mobilesdk_app_id": "1:924168030494:android:8140cbedec72bf56f5e10f",
         "android_client_info": {
           "package_name": "com.reservaciondevuelos"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyALo_WGoGOwm1Q1EODeKEP6xKKgReW2qLo"
+          "current_key": "AIzaSyDU3vTepKowJ-K83A7KDSJTN-7QP3i12L8"
         }
       ],
       "services": {
